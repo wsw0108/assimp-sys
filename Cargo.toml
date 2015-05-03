@@ -1,0 +1,14 @@
+[package]
+name = "assimp-sys"
+version = "0.0.3"
+authors = ["Lee Jeffery <lee@leejeffery.co.uk>"]
+
+description = "Rust FFI bindings for the Assimp library"
+repository = "https://github.com/Eljay/assimp-sys"
+
+license = "MIT"
+readme = "README.md"
+
+[dependencies]
+libc = "*"
+bitflags = "*"

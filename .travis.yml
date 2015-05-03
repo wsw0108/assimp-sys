@@ -1,0 +1,21 @@
+language: rust
+
+rust:
+  - beta
+  - nightly
+
+env:
+  - LD_LIBRARY_PATH=/usr/local/lib
+
+install:
+  - sudo apt-get update -qq
+  - sudo apt-get install libxxf86vm-dev libosmesa6-dev
+  - ./travis-install-assimp.sh
+
+before_script:
+  - rustc -V
+  - cargo -V
+
+script:
+  - cargo build -v
+  - cargo test -v
