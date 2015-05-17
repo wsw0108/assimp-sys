@@ -1,6 +1,7 @@
 language: rust
 
 rust:
+  - stable
   - beta
   - nightly
 
@@ -15,7 +16,13 @@ install:
 before_script:
   - rustc -V
   - cargo -V
+  - pip install 'travis-cargo<0.2' --user
+  - export PATH=$HOME/.local/bin:$PATH
 
-script:
-  - cargo build -v
-  - cargo test -v
+script: |
+  travis-cargo build &&
+  travis-cargo test &&
+  travis-cargo --only stable doc
+
+after_success:
+  - travis-cargo --only stable doc-upload
