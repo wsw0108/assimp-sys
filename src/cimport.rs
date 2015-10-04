@@ -40,13 +40,13 @@ extern {
         fs: *mut AiFileIO,
         props: *const AiPropertyStore) -> *const AiScene;
 
-    pub fn aiImportFromMemory(
+    pub fn aiImportFileFromMemory(
         buffer: *const c_char,
         length: c_uint,
         flags: AiPostProcessSteps,
         hint: *const c_char) -> *const AiScene;
 
-    pub fn aiImportFromMemoryWithProperties(
+    pub fn aiImportFileFromMemoryWithProperties(
         buffer: *const c_char,
         length: c_uint,
         flags: AiPostProcessSteps,
