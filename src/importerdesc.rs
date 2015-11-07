@@ -24,3 +24,8 @@ pub struct AiImporterDesc {
     pub max_minor: c_uint,
     pub file_extensions: *const c_char
 }
+
+#[link(name = "assimp")]
+extern {
+    pub fn aiGetImporterDesc(extension: *const c_char) -> *const AiImporterDesc;
+}

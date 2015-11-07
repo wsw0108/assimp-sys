@@ -1,6 +1,7 @@
-use libc::{c_char, c_float, c_int, c_uint, c_void};
+use libc::{c_char, c_float, c_int, c_uint, c_void, size_t};
 
 use cfileio::*;
+use importerdesc::*;
 use postprocess::*;
 use scene::*;
 use types::*;
@@ -149,4 +150,9 @@ extern {
 
     pub fn aiIdentityMatrix4(
         matrix: *mut AiMatrix4x4);
+
+    pub fn aiGetImportFormatCount() -> size_t;
+
+    pub fn aiGetImportFormatDescription(
+        index: size_t) -> *const AiImporterDesc;
 }

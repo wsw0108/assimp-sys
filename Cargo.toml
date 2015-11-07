@@ -10,5 +10,5 @@ license = "MIT"
 readme = "README.md"
 
 [dependencies]
-libc = "0.1.10"
+libc = "0.2"
 bitflags = "0.3.2"

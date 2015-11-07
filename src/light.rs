@@ -8,7 +8,8 @@ pub enum AiLightSourceType {
     Undefined = 0x0,
     Directional = 0x1,
     Point = 0x2,
-    Spot = 0x3
+    Spot = 0x3,
+    Ambient = 0x4,
 }
 
 #[repr(C)]
