@@ -1,4 +1,4 @@
-use libc::{c_float, c_int, c_uint};
+use std::os::raw::{c_float, c_int, c_uint};
 
 macro_rules! define_properties {
     ($($i:ident),+) => (

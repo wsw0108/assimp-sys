@@ -1,4 +1,4 @@
-use libc::{c_uint, c_void};
+use std::os::raw::{c_uint, c_void};
 
 use types::*;
 

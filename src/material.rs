@@ -1,4 +1,4 @@
-use libc::{c_char, c_float, c_int, c_uint};
+use std::os::raw::{c_char, c_float, c_int, c_uint};
 
 use types::*;
 

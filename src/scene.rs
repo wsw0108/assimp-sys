@@ -1,4 +1,4 @@
-use libc::{c_uint, c_void};
+use std::os::raw::{c_uint, c_void};
 
 use anim::*;
 use camera::*;
@@ -49,4 +49,25 @@ pub struct AiScene {
     pub num_cameras: c_uint,
     pub cameras: *mut *mut AiCamera,
     private: *const c_void
+}
+
+impl AiScene {
+    pub fn has_meshes(&self) -> bool {
+        !self.meshes.is_null() && self.num_meshes > 0
+    }
+    pub fn has_materials(&self) -> bool {
+        !self.materials.is_null() && self.num_materials > 0
+    }
+    pub fn has_lights(&self) -> bool {
+        !self.lights.is_null() && self.num_lights > 0
+    }
+    pub fn has_textures(&self) -> bool {
+        !self.textures.is_null() && self.num_textures > 0
+    }
+    pub fn has_cameras(&self) -> bool {
+        !self.cameras.is_null() && self.num_cameras > 0
+    }
+    pub fn has_animations(&self) -> bool {
+        !self.animations.is_null() && self.num_animations > 0
+    }
 }

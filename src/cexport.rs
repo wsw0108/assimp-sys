@@ -1,4 +1,4 @@
-use libc::{c_char, c_void, size_t};
+use std::os::raw::{c_char, c_void};
 
 use cfileio::*;
 use postprocess::*;
@@ -14,7 +14,7 @@ pub struct AiExportFormatDesc {
 
 #[repr(C)]
 pub struct AiExportDataBlob {
-    pub size: size_t,
+    pub size: usize,
     pub data: *mut c_void,
     pub name: AiString,
     pub next: *mut AiExportDataBlob
@@ -22,8 +22,8 @@ pub struct AiExportDataBlob {
 
 #[link(name = "assimp")]
 extern {
-    pub fn aiGetExportFormatCount() -> size_t;
-    pub fn aiGetExportFormatDescription(index: size_t) -> *const AiExportFormatDesc;
+    pub fn aiGetExportFormatCount() -> usize;
+    pub fn aiGetExportFormatDescription(index: usize) -> *const AiExportFormatDesc;
     pub fn aiCopyScene(input: *const AiScene, output: *mut *mut AiScene);
     pub fn aiFreeScene(input: *const AiScene);
     pub fn aiExportScene(scene: *const AiScene, format_id: *const c_char, filename: *const c_char,

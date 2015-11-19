@@ -1,4 +1,4 @@
-use libc::{c_float, c_uint};
+use std::os::raw::{c_float, c_uint};
 
 // Reexport submodules
 pub use self::color3::*;

@@ -1,4 +1,4 @@
-use libc::{c_float, c_uint};
+use std::os::raw::{c_float, c_uint};
 
 use types::*;
 
@@ -51,6 +51,24 @@ pub struct AiAnimMesh {
     pub num_vertices: c_uint
 }
 
+impl AiAnimMesh {
+    pub fn has_positions(&self) -> bool {
+        !self.vertices.is_null()
+    }
+    pub fn has_normals(&self) -> bool {
+        !self.normals.is_null()
+    }
+    pub fn has_tangents_and_bitangents(&self) -> bool {
+        !self.tangents.is_null()
+    }
+    pub fn has_vertex_colors(&self, index: usize) -> bool {
+        index < AI_MAX_NUMBER_OF_COLOR_SETS && !self.colors[index].is_null()
+    }
+    pub fn has_texture_coords(&self, index: usize) -> bool {
+        index < AI_MAX_NUMBER_OF_TEXTURECOORDS && !self.texture_coords[index].is_null()
+    }
+}
+
 #[repr(C)]
 pub struct AiMesh {
     pub primitive_types: c_uint,
@@ -70,4 +88,42 @@ pub struct AiMesh {
     pub name: AiString,
     pub num_anim_meshes: c_uint,
     pub anim_meshes: *mut *mut AiAnimMesh
+}
+
+impl AiMesh {
+    pub fn has_positions(&self) -> bool {
+        !self.vertices.is_null() && self.num_vertices > 0
+    }
+    pub fn has_faces(&self) -> bool {
+        !self.faces.is_null() && self.num_faces > 0
+    }
+    pub fn has_normals(&self) -> bool {
+        !self.normals.is_null() && self.num_vertices > 0
+    }
+    pub fn has_tangents_and_bitangents(&self) -> bool {
+        !self.tangents.is_null() && self.num_vertices > 0
+    }
+    pub fn has_vertex_colors(&self, index: usize) -> bool {
+        index < AI_MAX_NUMBER_OF_COLOR_SETS && !self.colors[index].is_null() && self.num_vertices > 0
+    }
+    pub fn has_texture_coords(&self, index: usize) -> bool {
+        index < AI_MAX_NUMBER_OF_TEXTURECOORDS && !self.texture_coords[index].is_null() && self.num_vertices > 0
+    }
+    pub fn get_num_uv_channels(&self) -> usize {
+        let mut n = 0;
+        while n < AI_MAX_NUMBER_OF_TEXTURECOORDS && !self.texture_coords[n].is_null() {
+            n += 1;
+        }
+        n
+    }
+    pub fn get_num_color_channels(&self) -> usize {
+        let mut n = 0;
+        while n < AI_MAX_NUMBER_OF_COLOR_SETS && !self.colors[n].is_null() {
+            n += 1;
+        }
+        n
+    }
+    pub fn has_bones(&self) -> bool {
+        !self.bones.is_null() && self.num_bones > 0
+    }
 }

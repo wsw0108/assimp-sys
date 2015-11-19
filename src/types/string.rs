@@ -2,13 +2,13 @@ use std::ffi::CString;
 use std::fmt::{Debug, Formatter, Result};
 use std::str;
 
-use libc::{c_uchar, size_t};
+use std::os::raw::c_uchar;
 pub const MAXLEN : usize = 1024;
 
 #[repr(C)]
 #[derive(Copy, Eq)]
 pub struct AiString {
-    pub length: size_t,
+    pub length: usize,
     pub data: [c_uchar; MAXLEN]
 }
 
@@ -35,7 +35,7 @@ impl<'a> From<&'a str> for AiString {
         let bytes = cstr.to_bytes();
 
         let mut aistr = AiString {
-            length: s.len() as size_t,
+            length: s.len() as usize,
             data: [0; MAXLEN]
         };
         for i in 0..s.len() {

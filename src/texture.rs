@@ -1,7 +1,7 @@
-use libc::{c_char, c_uchar, c_uint};
+use std::os::raw::{c_char, c_uchar, c_uint};
 
 #[repr(C, packed)]
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct AiTexel {
     pub b: c_uchar,
     pub g: c_uchar,
