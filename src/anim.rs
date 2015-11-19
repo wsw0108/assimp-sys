@@ -13,7 +13,7 @@ pub struct AiVectorKey {
 #[derive(Clone, Copy, Debug)]
 pub struct AiQuatKey {
     pub time: c_double,
-    pub velue: AiQuaternion
+    pub value: AiQuaternion
 }
 
 #[repr(C)]
