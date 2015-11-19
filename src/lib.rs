@@ -15,6 +15,7 @@ pub use metadata::*;
 pub use postprocess::*;
 pub use scene::*;
 pub use texture::*;
+pub use utils::*;
 pub use types::*;
 pub use version::*;
 
@@ -32,5 +33,6 @@ mod metadata;
 mod postprocess;
 mod scene;
 mod texture;
+mod utils;
 mod types;
 mod version;
