@@ -25,14 +25,14 @@ pub struct AiPlane {
     pub a: c_float,
     pub b: c_float,
     pub c: c_float,
-    pub d: c_float
+    pub d: c_float,
 }
 
 #[repr(C, packed)]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct AiRay {
     pub pos: AiVector3D,
-    pub dir: AiVector3D
+    pub dir: AiVector3D,
 }
 
 #[repr(C)]
@@ -40,7 +40,7 @@ pub struct AiRay {
 pub enum AiReturn {
     Success = 0,
     Failure = 1,
-    OutOfMemory = 3
+    OutOfMemory = 3,
 }
 
 #[repr(C)]
@@ -48,7 +48,7 @@ pub enum AiReturn {
 pub enum AiOrigin {
     Set = 0,
     Cur = 1,
-    End = 2
+    End = 2,
 }
 
 #[repr(C)]
@@ -57,7 +57,7 @@ pub enum AiDefaultLogStream {
     File = 1,
     StdOut = 2,
     StdErr = 4,
-    Debugger = 8
+    Debugger = 8,
 }
 
 #[repr(C)]
@@ -70,5 +70,5 @@ pub struct AiMemoryInfo {
     pub animations: c_uint,
     pub cameras: c_uint,
     pub lights: c_uint,
-    pub total: c_uint
+    pub total: c_uint,
 }

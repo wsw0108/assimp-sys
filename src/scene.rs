@@ -18,7 +18,7 @@ pub struct AiNode {
     pub children: *mut *mut AiNode,
     pub num_meshes: c_uint,
     pub meshes: *mut c_uint,
-    pub metadata: *mut AiMetadata
+    pub metadata: *mut AiMetadata,
 }
 
 bitflags! {
@@ -48,7 +48,7 @@ pub struct AiScene {
     pub lights: *mut *mut AiLight,
     pub num_cameras: c_uint,
     pub cameras: *mut *mut AiCamera,
-    private: *const c_void
+    private: *const c_void,
 }
 
 impl AiScene {

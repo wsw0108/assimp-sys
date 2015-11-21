@@ -3,27 +3,27 @@ use std::fmt::{Debug, Formatter, Result};
 use std::str;
 
 use std::os::raw::c_uchar;
-pub const MAXLEN : usize = 1024;
+pub const MAXLEN: usize = 1024;
 
 #[repr(C)]
 #[derive(Copy, Eq)]
 pub struct AiString {
     pub length: usize,
-    pub data: [c_uchar; MAXLEN]
+    pub data: [c_uchar; MAXLEN],
 }
 
 impl Default for AiString {
     fn default() -> AiString {
         AiString {
             length: 0,
-            data: [0; MAXLEN]
+            data: [0; MAXLEN],
         }
     }
 }
 
 impl AsRef<str> for AiString {
     fn as_ref(&self) -> &str {
-        str::from_utf8(&self.data[0..self.length as usize]).unwrap()
+        str::from_utf8(&self.data[0..self.length]).unwrap()
     }
 }
 
@@ -36,7 +36,7 @@ impl<'a> From<&'a str> for AiString {
 
         let mut aistr = AiString {
             length: s.len() as usize,
-            data: [0; MAXLEN]
+            data: [0; MAXLEN],
         };
         for i in 0..s.len() {
             aistr.data[i] = bytes[i];
@@ -46,7 +46,9 @@ impl<'a> From<&'a str> for AiString {
 }
 
 impl Clone for AiString {
-    fn clone(&self) -> AiString { *self }
+    fn clone(&self) -> AiString {
+        *self
+    }
 }
 
 impl Debug for AiString {
@@ -58,9 +60,6 @@ impl Debug for AiString {
 
 impl PartialEq for AiString {
     fn eq(&self, other: &AiString) -> bool {
-        let s1: &str = self.as_ref();
-        let s2: &str = other.as_ref();
-        s1 == s2
+        self.as_ref() == other.as_ref()
     }
 }
-

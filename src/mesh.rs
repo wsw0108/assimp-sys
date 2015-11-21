@@ -12,14 +12,14 @@ pub const AI_MAX_NUMBER_OF_TEXTURECOORDS: usize = 0x8;
 #[repr(C)]
 pub struct AiFace {
     pub num_indices: c_uint,
-    pub indices: *mut c_uint
+    pub indices: *mut c_uint,
 }
 
 #[repr(C)]
 #[derive(Clone, Copy, Debug)]
 pub struct AiVertexWeight {
     pub vertex_id: c_uint,
-    pub weight: c_float
+    pub weight: c_float,
 }
 
 #[repr(C)]
@@ -27,7 +27,7 @@ pub struct AiBone {
     pub name: AiString,
     pub num_weights: c_uint,
     pub weights: *mut AiVertexWeight,
-    pub offset_matrix: AiMatrix4x4
+    pub offset_matrix: AiMatrix4x4,
 }
 
 bitflags! {
@@ -48,7 +48,7 @@ pub struct AiAnimMesh {
     pub bitangents: *mut AiVector3D,
     pub colors: [*mut AiColor4D; AI_MAX_NUMBER_OF_COLOR_SETS],
     pub texture_coords: [*mut AiVector3D; AI_MAX_NUMBER_OF_TEXTURECOORDS],
-    pub num_vertices: c_uint
+    pub num_vertices: c_uint,
 }
 
 impl AiAnimMesh {
@@ -87,7 +87,7 @@ pub struct AiMesh {
     pub material_index: c_uint,
     pub name: AiString,
     pub num_anim_meshes: c_uint,
-    pub anim_meshes: *mut *mut AiAnimMesh
+    pub anim_meshes: *mut *mut AiAnimMesh,
 }
 
 impl AiMesh {
@@ -104,10 +104,12 @@ impl AiMesh {
         !self.tangents.is_null() && self.num_vertices > 0
     }
     pub fn has_vertex_colors(&self, index: usize) -> bool {
-        index < AI_MAX_NUMBER_OF_COLOR_SETS && !self.colors[index].is_null() && self.num_vertices > 0
+        index < AI_MAX_NUMBER_OF_COLOR_SETS && !self.colors[index].is_null() &&
+        self.num_vertices > 0
     }
     pub fn has_texture_coords(&self, index: usize) -> bool {
-        index < AI_MAX_NUMBER_OF_TEXTURECOORDS && !self.texture_coords[index].is_null() && self.num_vertices > 0
+        index < AI_MAX_NUMBER_OF_TEXTURECOORDS && !self.texture_coords[index].is_null() &&
+        self.num_vertices > 0
     }
     pub fn get_num_uv_channels(&self) -> usize {
         let mut n = 0;

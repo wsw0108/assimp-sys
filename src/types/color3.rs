@@ -5,5 +5,5 @@ use std::os::raw::c_float;
 pub struct AiColor3D {
     pub r: c_float,
     pub g: c_float,
-    pub b: c_float
+    pub b: c_float,
 }

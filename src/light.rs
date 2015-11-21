@@ -26,5 +26,5 @@ pub struct AiLight {
     pub color_specular: AiColor3D,
     pub color_ambient: AiColor3D,
     pub angle_inner_cone: c_float,
-    pub angle_outer_cone: c_float
+    pub angle_outer_cone: c_float,
 }

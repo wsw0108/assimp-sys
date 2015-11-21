@@ -6,5 +6,5 @@ pub struct AiColor4D {
     pub r: c_float,
     pub g: c_float,
     pub b: c_float,
-    pub a: c_float
+    pub a: c_float,
 }

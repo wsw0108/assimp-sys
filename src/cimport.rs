@@ -11,18 +11,18 @@ pub type AiLogStreamCallback = Option<unsafe extern "system" fn(*const c_char, *
 #[repr(C)]
 pub struct AiLogStream {
     pub callback: AiLogStreamCallback,
-    pub user: *mut c_void
+    pub user: *mut c_void,
 }
 
 #[repr(C)]
 #[derive(Clone, Copy, Debug)]
 pub struct AiPropertyStore {
-    pub sentinel: c_char
+    pub sentinel: c_char,
 }
 
 pub type AiBool = c_int;
-pub const AI_FALSE : AiBool = 0;
-pub const AI_TRUE : AiBool = 1;
+pub const AI_FALSE: AiBool = 0;
+pub const AI_TRUE: AiBool = 1;
 
 #[link(name = "assimp")]
 extern {

@@ -60,4 +60,3 @@ bitflags! {
                                                     | AIPROCESS_OPTIMIZE_MESHES.bits
     }
 }
-

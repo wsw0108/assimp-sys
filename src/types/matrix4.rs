@@ -18,5 +18,5 @@ pub struct AiMatrix4x4 {
     pub d1: c_float,
     pub d2: c_float,
     pub d3: c_float,
-    pub d4: c_float
+    pub d4: c_float,
 }

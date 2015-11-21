@@ -12,5 +12,5 @@ pub struct AiCamera {
     pub horizontal_fov: c_float,
     pub clip_plane_near: c_float,
     pub clip_plane_far: c_float,
-    pub aspect: c_float
+    pub aspect: c_float,
 }

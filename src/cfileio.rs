@@ -27,7 +27,7 @@ pub type AiUserData = *const c_char;
 pub struct AiFileIO {
     pub open_proc: AiFileOpenProc,
     pub close_proc: AiFileCloseProc,
-    pub user_data: AiUserData
+    pub user_data: AiUserData,
 }
 
 #[repr(C)]
@@ -38,5 +38,5 @@ pub struct AiFile {
     pub file_size_proc: AiFileTellProc,
     pub seek_proc: AiFileSeek,
     pub flush_proc: AiFileFlushProc,
-    pub user_data: AiUserData
+    pub user_data: AiUserData,
 }

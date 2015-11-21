@@ -6,5 +6,5 @@ pub struct AiQuaternion {
     pub w: c_float,
     pub x: c_float,
     pub y: c_float,
-    pub z: c_float
+    pub z: c_float,
 }

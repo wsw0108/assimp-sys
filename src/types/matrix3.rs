@@ -11,5 +11,5 @@ pub struct AiMatrix3x3 {
     pub b3: c_float,
     pub c1: c_float,
     pub c2: c_float,
-    pub c3: c_float
+    pub c3: c_float,
 }
