@@ -20,7 +20,6 @@ pub struct AiExportDataBlob {
     pub next: *mut AiExportDataBlob,
 }
 
-#[link(name = "assimp")]
 extern {
     pub fn aiGetExportFormatCount() -> usize;
 
