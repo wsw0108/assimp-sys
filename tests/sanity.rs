@@ -53,7 +53,7 @@ fn check_struct_sizes_x86() {
     assert_eq!(size_of::<AiAnimation>(), 1064);
     assert_eq!(size_of::<AiAnimMesh>(), 84);
     assert_eq!(size_of::<AiBone>(), 1100);
-    assert_eq!(size_of::<AiCamera>(), 1088);
+    assert_eq!(size_of::<AiCamera>(), 1080);
     assert_eq!(size_of::<AiColor3D>(), 12);
     assert_eq!(size_of::<AiColor4D>(), 16);
     assert_eq!(size_of::<AiExportDataBlob>(), 1040);
