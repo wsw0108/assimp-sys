@@ -1,6 +1,6 @@
 [package]
 name = "assimp-sys"
-version = "0.0.7"
+version = "0.1.0"
 authors = ["Lee Jeffery <lee@leejeffery.co.uk>"]
 links = "assimp"
 
