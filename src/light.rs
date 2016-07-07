@@ -10,6 +10,7 @@ pub enum AiLightSourceType {
     Point = 0x2,
     Spot = 0x3,
     Ambient = 0x4,
+    Area = 0x5,
 }
 
 #[repr(C)]
@@ -19,6 +20,7 @@ pub struct AiLight {
     pub light_type: AiLightSourceType,
     pub position: AiVector3D,
     pub direction: AiVector3D,
+    pub up: AiVector3D,
     pub attenuation_constant: c_float,
     pub attenuation_linear: c_float,
     pub attenuation_quadratic: c_float,
@@ -27,4 +29,5 @@ pub struct AiLight {
     pub color_ambient: AiColor3D,
     pub angle_inner_cone: c_float,
     pub angle_outer_cone: c_float,
+    pub size: AiVector2D,
 }

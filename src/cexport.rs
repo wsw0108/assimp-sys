@@ -26,6 +26,9 @@ extern {
     pub fn aiGetExportFormatDescription(
         index: usize) -> *const AiExportFormatDesc;
 
+    pub fn aiReleaseExportFormatDescription(
+        desc: *const AiExportFormatDesc);
+
     pub fn aiCopyScene(
         input: *const AiScene,
         output: *mut *mut AiScene);
