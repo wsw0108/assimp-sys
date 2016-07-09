@@ -6,7 +6,7 @@ use std::env;
 
 fn main() {
     // Use system libassimp if it exists
-    if let Ok(..) = pkg_config::Config::new().atleast_version("3.2.0").find("assimp") {
+    if let Ok(..) = pkg_config::Config::new().atleast_version("3.3.0").find("assimp") {
         return
     }
 
