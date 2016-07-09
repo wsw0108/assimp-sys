@@ -11,6 +11,7 @@ before_script:
   - cargo -V
   - pip install 'travis-cargo<0.2' --user
   - export PATH=$HOME/.local/bin:$PATH
+  - export CARGO_TARGET_DIR="$TRAVIS_BUILD_DIR/target"
 
 script:
   - travis-cargo build -- -j1
