@@ -1,0 +1,13 @@
+[package]
+name = "assimp-sys-test"
+version = "0.1.0"
+authors = ["Lee Jeffery <lee@leejeffery.co.uk>"]
+
+build = "build.rs"
+
+[dependencies]
+assimp-sys = { path = "../" }
+libc = "0.2.13"
+
+[build-dependencies]
+gcc = "0.3.28"
