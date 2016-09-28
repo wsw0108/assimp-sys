@@ -6,7 +6,7 @@ use std::os::raw::c_uchar;
 pub const MAXLEN: usize = 1024;
 
 #[repr(C)]
-#[derive(Copy, Eq)]
+#[derive(Copy)]
 pub struct AiString {
     pub length: usize,
     pub data: [c_uchar; MAXLEN],
@@ -63,3 +63,5 @@ impl PartialEq for AiString {
         self.as_ref() == other.as_ref()
     }
 }
+
+impl Eq for AiString {}
