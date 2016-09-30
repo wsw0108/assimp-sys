@@ -3,16 +3,12 @@ extern crate pkg_config;
 
 use cmake::Config;
 use std::env;
-use std::process::Command;
 
 fn main() {
     // Use system libassimp if it exists
     if let Ok(..) = pkg_config::Config::new().atleast_version("3.3.0").find("assimp") {
         return
     }
-
-    // Ensure assimp submodule exists
-    let _ = Command::new("git").args(&["submodule", "update", "--init"]).status();
 
     // Compile assimp from source
     // Disable unnecessary stuff, it takes long enough to compile already
