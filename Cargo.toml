@@ -11,7 +11,7 @@ license = "MIT"
 readme = "README.md"
 
 build = "build.rs"
-exclude = ["assimp/*"]
+exclude = ["assimp/test/*"]
 
 [dependencies]
 bitflags = "0.3.2"
