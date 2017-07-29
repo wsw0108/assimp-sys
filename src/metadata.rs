@@ -6,11 +6,12 @@ use types::*;
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum AiMetadataType {
     Bool = 0,
-    Int = 1,
+    Int32 = 1,
     Uint64 = 2,
     Float = 3,
-    AiString = 4,
-    AiVector3D = 5,
+    Double = 4,
+    AiString = 5,
+    AiVector3D = 6,
 }
 
 #[repr(C)]

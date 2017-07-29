@@ -24,6 +24,15 @@ pub struct AiMeshKey {
 }
 
 #[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AiMeshMorphKey {
+    pub time: c_double,
+    pub values: *mut c_uint,
+    pub weights: *mut c_double,
+    pub num_values_and_weights: c_uint,
+}
+
+#[repr(C)]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum AiAnimBehaviour {
     Default = 0,
@@ -53,6 +62,13 @@ pub struct AiMeshAnim {
 }
 
 #[repr(C)]
+pub struct AiMeshMorphAnim {
+    pub name: AiString,
+    pub num_keys: c_uint,
+    pub keys: *mut AiMeshMorphKey,
+}
+
+#[repr(C)]
 pub struct AiAnimation {
     pub name: AiString,
     pub duration: c_double,
@@ -61,4 +77,6 @@ pub struct AiAnimation {
     pub channels: *mut *mut AiNodeAnim,
     pub num_mesh_channels: c_uint,
     pub mesh_channels: *mut *mut AiMeshAnim,
+    pub num_morph_mesh_channels: c_uint,
+    pub morph_mesh_channels: *mut *mut AiMeshMorphAnim,
 }

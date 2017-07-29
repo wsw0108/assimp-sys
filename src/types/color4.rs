@@ -1,6 +1,6 @@
 use std::os::raw::c_float;
 
-#[repr(C, packed)]
+#[repr(C)]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct AiColor4D {
     pub r: c_float,

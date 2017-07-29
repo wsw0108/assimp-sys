@@ -5,7 +5,7 @@
 
 extern "C" {
     bool get_struct_sizes(size_t* sizes, int len) {
-        if (len != 40) {
+        if (len != 42) {
             return false;
         }
 
@@ -49,6 +49,9 @@ extern "C" {
         sizes[37] = sizeof(aiVector3D);
         sizes[38] = sizeof(aiVectorKey);
         sizes[39] = sizeof(aiVertexWeight);
+
+        sizes[40] = sizeof(aiMeshMorphAnim);
+        sizes[41] = sizeof(aiMeshMorphKey);
 
         return true;
     }

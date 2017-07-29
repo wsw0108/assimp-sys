@@ -19,7 +19,7 @@ mod string;
 mod vector2;
 mod vector3;
 
-#[repr(C, packed)]
+#[repr(C)]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct AiPlane {
     pub a: c_float,
@@ -28,7 +28,7 @@ pub struct AiPlane {
     pub d: c_float,
 }
 
-#[repr(C, packed)]
+#[repr(C)]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct AiRay {
     pub pos: AiVector3D,

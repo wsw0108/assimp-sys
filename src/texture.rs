@@ -13,6 +13,6 @@ pub struct AiTexel {
 pub struct AiTexture {
     pub width: c_uint,
     pub height: c_uint,
-    pub format_hint: [c_char; 4],
+    pub format_hint: [c_char; 9],
     pub data: *mut AiTexel,
 }

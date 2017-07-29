@@ -49,6 +49,7 @@ pub struct AiAnimMesh {
     pub colors: [*mut AiColor4D; AI_MAX_NUMBER_OF_COLOR_SETS],
     pub texture_coords: [*mut AiVector3D; AI_MAX_NUMBER_OF_TEXTURECOORDS],
     pub num_vertices: c_uint,
+    pub weight: c_float,
 }
 
 impl AiAnimMesh {
@@ -70,6 +71,14 @@ impl AiAnimMesh {
 }
 
 #[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum AiMorphingMethod {
+    VertexBlend = 0x1,
+    MorphNormalized = 0x2,
+    MorphRelative = 0x3,
+}
+
+#[repr(C)]
 pub struct AiMesh {
     pub primitive_types: c_uint,
     pub num_vertices: c_uint,
@@ -88,6 +97,7 @@ pub struct AiMesh {
     pub name: AiString,
     pub num_anim_meshes: c_uint,
     pub anim_meshes: *mut *mut AiAnimMesh,
+    pub method: c_uint,
 }
 
 impl AiMesh {

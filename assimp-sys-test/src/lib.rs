@@ -15,8 +15,8 @@ extern {
 
 #[test]
 fn check_struct_sizes() {
-    let mut sizes: [size_t; 40] = [0; 40];
-    let result = unsafe { get_struct_sizes(sizes.as_mut_ptr(), 40) };
+    let mut sizes: [size_t; 42] = [0; 42];
+    let result = unsafe { get_struct_sizes(sizes.as_mut_ptr(), 42) };
     assert!(result, "Array size mismatch in get_struct_sizes.");
 
     assert_eq!(sizes[0], size_of::<AiAnimation>());
@@ -59,4 +59,7 @@ fn check_struct_sizes() {
     assert_eq!(sizes[37], size_of::<AiVector3D>());
     assert_eq!(sizes[38], size_of::<AiVectorKey>());
     assert_eq!(sizes[39], size_of::<AiVertexWeight>());
+
+    assert_eq!(sizes[40], size_of::<AiMeshMorphAnim>());
+    assert_eq!(sizes[41], size_of::<AiMeshMorphKey>());
 }

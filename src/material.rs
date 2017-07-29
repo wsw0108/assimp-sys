@@ -96,6 +96,7 @@ pub struct AiUVTransform {
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum AiPropertyTypeInfo {
     Float = 0x1,
+    Double = 0x2,
     String = 0x3,
     Integer = 0x4,
     Buffer = 0x5,
