@@ -21,6 +21,9 @@ fn main() {
         .build();
     println!("cargo:rustc-link-search=native={}", dst.join("lib").display());
 
+    // Fix for irrXML not being linked properly (https://github.com/assimp/assimp/issues/1283)
+    println!("cargo:rustc-link-search=native={}", dst.join("build/contrib/irrXML").display());
+    println!("cargo:rustc-link-lib=IrrXML");
 
     // Link to correct versions of assimp and zlib
     // NOTE: MSVC has to link to release libs to avoid CRT mismatch
