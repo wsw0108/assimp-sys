@@ -15,21 +15,19 @@ fn main() {
     let dst = Config::new("assimp")
         .define("ASSIMP_BUILD_ASSIMP_TOOLS", "OFF")
         .define("ASSIMP_BUILD_TESTS", "OFF")
+        .define("ASSIMP_INSTALL_PDB", "OFF")
         .define("BUILD_SHARED_LIBS", "OFF")
-        .define("CMAKE_BUILD_TYPE", "Release")
+        .define("CMAKE_SUPPRESS_DEVELOPER_WARNINGS", "ON")
         .define("LIBRARY_SUFFIX", "")
         .build();
     println!("cargo:rustc-link-search=native={}", dst.join("lib").display());
 
-    // Fix for irrXML not being linked properly (https://github.com/assimp/assimp/issues/1283)
-    println!("cargo:rustc-link-search=native={}", dst.join("build/contrib/irrXML").display());
-    println!("cargo:rustc-link-lib=IrrXML");
-
-    // Link to correct versions of assimp and zlib
-    // NOTE: MSVC has to link to release libs to avoid CRT mismatch
-    println!("cargo:rustc-link-lib=static=assimp");
+    // Link to assimp and its dependencies
+    let debug_postfix = if env::var("DEBUG").unwrap() == "true" { "d" } else { "" };
+    println!("cargo:rustc-link-lib=static=assimp{}", debug_postfix);
+    println!("cargo:rustc-link-lib=static=IrrXML{}", debug_postfix);
     if !pkg_config::find_library("zlib").is_ok() {
-        println!("cargo:rustc-link-lib=static=zlibstatic");
+        println!("cargo:rustc-link-lib=static=zlibstatic{}", debug_postfix);
     }
 
     // Link to libstdc++ on GNU
@@ -37,7 +35,6 @@ fn main() {
     if target.contains("gnu") {
         println!("cargo:rustc-link-lib=stdc++");
     }
-
 
     println!("cargo:rerun-if-changed=build.rs");
 }
