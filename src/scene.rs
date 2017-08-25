@@ -23,13 +23,13 @@ pub struct AiNode {
 
 bitflags! {
     #[repr(C)]
-    flags AiSceneFlags : c_uint {
-        const AI_SCENE_FLAGS_INCOMPLETE = 0x1,
-        const AI_SCENE_FLAGS_VALIDATED = 0x2,
-        const AI_SCENE_FLAGS_VALIDATION_WARNING = 0x4,
-        const AI_SCENE_FLAGS_NON_VERBOSE_FORMAT = 0x8,
-        const AI_SCENE_FLAGS_TERRAIN = 0x10,
-        const AI_SCENE_FLAGS_ALLOW_SHARED = 0x20,
+    pub struct AiSceneFlags : c_uint {
+        const AI_SCENE_FLAGS_INCOMPLETE = 0x1;
+        const AI_SCENE_FLAGS_VALIDATED = 0x2;
+        const AI_SCENE_FLAGS_VALIDATION_WARNING = 0x4;
+        const AI_SCENE_FLAGS_NON_VERBOSE_FORMAT = 0x8;
+        const AI_SCENE_FLAGS_TERRAIN = 0x10;
+        const AI_SCENE_FLAGS_ALLOW_SHARED = 0x20;
     }
 }
 

@@ -10,4 +10,4 @@ assimp-sys = { path = "../", version = "0.2.0" }
 libc = "0.2.13"
 
 [build-dependencies]
-gcc = "0.3.28"
+gcc = "0.3.53"
