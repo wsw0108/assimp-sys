@@ -6,7 +6,7 @@ authors = ["Lee Jeffery <lee@leejeffery.co.uk>"]
 build = "build.rs"
 
 [dependencies]
-assimp-sys = { path = "../", version = "0.2.0" }
+assimp-sys = { path = "../", version = "0.3.0" }
 libc = "0.2.13"
 
 [build-dependencies]
