@@ -34,6 +34,8 @@ fn main() {
     let target = env::var("TARGET").unwrap();
     if target.contains("gnu") {
         println!("cargo:rustc-link-lib=stdc++");
+    } else if target.contains("apple") {
+        println!("cargo:rustc-link-lib=c++");
     }
 
     println!("cargo:rerun-if-changed=build.rs");
