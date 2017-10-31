@@ -1,5 +1,7 @@
 extern crate cmake;
 extern crate pkg_config;
+#[cfg(target_env = "msvc")]
+extern crate vcpkg;
 
 use cmake::Config;
 use std::env;
@@ -7,6 +9,9 @@ use std::env;
 fn main() {
     // Use system libassimp if it exists
     if let Ok(..) = pkg_config::Config::new().atleast_version("4.0.0").find("assimp") {
+        return
+    }
+    if try_vcpkg() {
         return
     }
 
@@ -39,4 +44,14 @@ fn main() {
     }
 
     println!("cargo:rerun-if-changed=build.rs");
+}
+
+#[cfg(not(target_env = "msvc"))]
+fn try_vcpkg() -> bool {
+    false
+}
+
+#[cfg(target_env = "msvc")]
+fn try_vcpkg() -> bool {
+    vcpkg::probe_package("assimp").is_ok()
 }
