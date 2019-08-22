@@ -1,7 +1,7 @@
-extern crate gcc;
+extern crate cc;
 
 fn main() {
-    gcc::Build::new()
+    cc::Build::new()
         .file("src/tests.cpp")
         .include(".")
         .include("../assimp/include")

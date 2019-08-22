@@ -1,5 +1,8 @@
 language: rust
 sudo: false
+
+dist: bionic
+
 os:
   - linux
   - osx
